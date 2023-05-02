@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    boolean userHasValidEmail(User user);
+    boolean userHasValidEmailAddress(User user);
 }

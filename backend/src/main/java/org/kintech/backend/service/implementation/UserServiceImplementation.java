@@ -10,7 +10,9 @@ import java.util.regex.Pattern;
 @Service
 public class UserServiceImplementation implements UserService {
     @Override
-    public boolean userHasValidEmail(User user) {
+    public boolean userHasValidEmailAddress(User user) {
+        if(user == null || user.getEmailAddress() == null) return false;
+
         String emailRegex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[A-Z0-9-]+\\.)+[A-Z]{2,6}$";
 
         Pattern pattern = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);

@@ -6,10 +6,6 @@ import org.kintech.backend.domain.User;
 import org.kintech.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.junit.Assert;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @SpringBootTest
 public class EmailAddressTests {
@@ -22,17 +18,34 @@ public class EmailAddressTests {
         String emailAddress = "hello@project.us.org";
         User anUser = new User(null, emailAddress, null, null);
 
-        Assertions.assertTrue(userService.userHasValidEmail(anUser));
+        Assertions.assertTrue(userService.userHasValidEmailAddress(anUser));
     }
     @Test
     void invalidEmailAddressProvided() {
         String emailAddress = "hello@project";
         User anUser = new User(null, emailAddress, null, null);
 
-        Assertions.assertFalse(userService.userHasValidEmail(anUser));
+        Assertions.assertFalse(userService.userHasValidEmailAddress(anUser));
     }
 
     @Test
     void emptyEmailProvided() {
+        String emailAddress = "";
+        User anUser = new User(null, emailAddress, null, null);
+
+        Assertions.assertFalse(userService.userHasValidEmailAddress(anUser));
+    }
+
+    @Test
+    void noEmailProvided() {
+        String emailAddress = null;
+        User anUser = new User(null, emailAddress, null, null);
+
+        Assertions.assertFalse(userService.userHasValidEmailAddress(anUser));
+    }
+
+    @Test
+    void existedEmailProvided() {
+
     }
 }
