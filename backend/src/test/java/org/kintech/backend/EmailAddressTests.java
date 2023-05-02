@@ -34,5 +34,17 @@ public class EmailAddressTests {
 
     @Test
     void emptyEmailProvided() {
+        String emailAddress = "";
+        User anUser = new User(null, emailAddress, null, null);
+
+        Assertions.assertFalse(userService.userHasValidEmail(anUser));
+    }
+
+    @Test
+    void noEmailProvided() {
+        String emailAddress = null;
+        User anUser = new User(null, emailAddress, null, null);
+
+        Assertions.assertFalse(userService.userHasValidEmail(anUser));
     }
 }
