@@ -46,5 +46,9 @@ public class EmailAddressTests {
 
     @Test
     void existedEmailProvided() {
+        String emailAddress = "xxy@xyz.com";
+        User anUser = new User(null, emailAddress, null, null);
+
+        Assertions.assertTrue(userService.userProvidedUsedEmailAddress(anUser));
     }
 }
