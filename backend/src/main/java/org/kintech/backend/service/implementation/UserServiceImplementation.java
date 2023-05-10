@@ -13,7 +13,11 @@ import java.util.regex.Pattern;
 
 @Service
 public class UserServiceImplementation implements UserService {
-    @Autowired private UserRepository repository;
+    final private UserRepository repository;
+
+    public UserServiceImplementation(@Autowired UserRepository userRepository) {
+        repository = userRepository;
+    }
 
     @Override
     public boolean userHasValidEmailAddress(User user) {
